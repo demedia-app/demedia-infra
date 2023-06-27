@@ -1,16 +1,12 @@
-data "aws_security_group" "existing" {
-  name = "demedia-host"
-}
-
 data "aws_vpc" "existing" {
   default = true
 }
 
 resource "aws_security_group" "demedia-sg" {
-  count       = data.aws_security_group.existing.id == "" ? 1 : 0
-  name        = "demedia-host-sg"
-  description = "SG for demedia POC"
+  name        = var.security-group-name
+  description = var.security-group-description
   vpc_id      = data.aws_vpc.existing.id
+  tags = var.sg-tags
 
   ingress {
     from_port   = 22

@@ -1,6 +1,7 @@
 #backend.tf
 provider "aws" {
   region = "us-east-1"
+  profile = "demedia-IAM"
 }
 
 resource "aws_s3_bucket" "tf_remote_state" {
@@ -10,7 +11,7 @@ resource "aws_s3_bucket" "tf_remote_state" {
   }
 }
 
-resource "aws_s3_bucket_versioning" "versioning_example" {
+resource "aws_s3_bucket_versioning" "versioning_enable" {
   bucket = aws_s3_bucket.tf_remote_state.id
   versioning_configuration {
     status = "Enabled"
