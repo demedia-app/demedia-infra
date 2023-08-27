@@ -10,4 +10,4 @@ sudo systemctl enable docker
 sudo groupadd docker
 sudo usermod -aG docker ubuntu
 sudo docker pull ghcr.io/sithumonline/demedia-benchmark-peer:latest
-sudo docker run --name demedia-benchmark-client --network host -d ghcr.io/sithumonline/demedia-benchmark-peer
+sudo docker run --name demedia-benchmark-peer -e DATABASE_URL=postgres://nostr:nostr@34.195.250.101:5433/benchmark?sslmode=disable  --network host -d ghcr.io/sithumonline/demedia-benchmark-peer

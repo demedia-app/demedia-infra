@@ -90,9 +90,6 @@ resource "aws_key_pair" "peer_ec2_key" {
 
 data "template_file" "peer_userdata" {
   template = file("${path.module}/templates/peer-userdata.sh")
-  vars = {
-    var_in_bash = var.var_in_bash
-  }
 }
 
 resource "aws_instance" "peer_ec2" {
